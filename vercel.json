@@ -1,3 +1,0 @@
-{
-    "postInstall": "npx prisma generate"
-}
