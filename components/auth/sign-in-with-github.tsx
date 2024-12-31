@@ -9,7 +9,7 @@ export default function SignInWithGithubButton () {
             action={async () => {
                 "use server"
 
-                await signIn("github")
+                await signIn("github", { callbackUrl: "/dashboard" })
             }}
         >
             <Button
