@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "App" ALTER COLUMN "status" DROP NOT NULL,
+ALTER COLUMN "status" SET DATA TYPE TEXT;
