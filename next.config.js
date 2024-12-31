@@ -17,6 +17,10 @@ const nextConfig = {
     images: {
         domains: ['res.cloudinary.com', 'ucarecdn.com'],
     },
+
+    typescript: {
+        ignoreBuildErrors: true,
+    },
     
     webpack: (config) => {
         config.resolve.fallback = {

@@ -55,7 +55,7 @@ export default function ListView ({apps}: {apps?: App[]}) {
     return (
         <article>
             {apps && apps.length > 0 ? apps?.map(app => (
-                <Link download={app?.appName} href={app?.apkUrl || "#"} className="my-4 w-full grid gap-2" key={app.id}>
+                <Link href={`/dashboard/apps/${app?.id}`} className="my-4 w-full grid gap-2" key={app.id}>
                     <AppComponent key={app.id} app={app} />
                 </Link>
             )) :
