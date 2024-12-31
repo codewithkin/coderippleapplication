@@ -9,7 +9,7 @@ export default {
         redirect_uri: "https://app.coderipple.live/api/auth/callback/github",
       },
     },
-  })],,
+  })],
   callbacks: {
     async redirect({ url, baseUrl }) {
       // Example: Redirect to a specific URL after sign-in
