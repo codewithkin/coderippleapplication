@@ -7,9 +7,9 @@ export default function SignInWithGithubButton () {
         <form
         className="w-full flex justify-center my-4"
             action={async () => {
-                "use server"
+                "use server";
 
-                await signIn("github")
+                await signIn("github");
             }}
         >
             <Button
