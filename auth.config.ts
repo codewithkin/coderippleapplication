@@ -7,7 +7,7 @@ export default {
   providers: [GitHub({
     authorization: {
       params: {
-        redirect_uri: "http://localhost:3000/api/auth/callback/github",
+        redirect_uri: "https://app.coderipple.live/api/auth/callback/github",
       },
     },
   })],
