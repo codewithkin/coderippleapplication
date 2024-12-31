@@ -3,7 +3,13 @@ import type { NextAuthConfig } from "next-auth"
  
 // Notice this is only an object, not a full Auth.js instance
 export default {
-  providers: [GitHub],
+  providers: [GitHub({
+    authorization: {
+      params: {
+        redirect_uri: "https://app.coderipple.live/api/auth/callback/github",
+      },
+    },
+  })],,
   callbacks: {
     async redirect({ url, baseUrl }) {
       // Example: Redirect to a specific URL after sign-in
