@@ -24,6 +24,7 @@ export type App = {
 
 export default async function Profile({email}: {email?: string}) {
     const user = await prisma.user.findUnique({where: {email}});
+    console.log("Our user: ", email)
     if(user === undefined) return null;
 
     // Destructure the necessary fields from the user
