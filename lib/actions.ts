@@ -5,7 +5,35 @@ import { revalidatePath } from "next/cache";
 import { Polar } from "@polar-sh/sdk";
 import { redirect } from "next/navigation";
 import { notification } from "@/components/dashboard/NotificationsDrawer";
-import { auth } from "@/auth";
+import { auth, signOut } from "@/auth";
+
+export async function signUserOut () {
+    try {
+        await signOut();
+
+        // Redirect to the signin page
+        redirect("/auth/signin");
+    } catch (e) {
+        console.log("An error occured while signing out: ", e);
+    }
+}
+
+export async function deleteUser () {
+    try {
+        const session = await auth();
+        const {email} = session?.user;
+
+        await prisma.user.delete({
+            where: {
+                email
+            }
+        });
+
+        await signUserOut();
+    } catch (e) {
+        console.log("An error occured while deleting user: ", e);
+    }
+}
 
 export async function findToken (checkoutId: string) {
     try {

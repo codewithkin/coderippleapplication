@@ -6,6 +6,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/Avatar";
 import { prisma } from "@/prisma";
 import { signOut } from "@/auth";
 import Logout from "../auth/Logout";
+import { deleteUser } from "@/lib/actions";
+import DeleterUser from "./DeleteUser";
 
 // Create an app type
 export type App = {
@@ -49,7 +51,6 @@ export default async function Profile({email}: {email?: string}) {
         <article className={`${poppins.className}`}>
             <article className="flex gap-4 items-center w-full justify-between">
                 <article className="flex gap-2 items-center">
-
                         {/* Avatar */}
                         <Avatar color="blue">
                             <AvatarImage src={image || "https://wallpapercave.com/uwp/uwp4417165.jpeg"} />
@@ -79,15 +80,7 @@ export default async function Profile({email}: {email?: string}) {
 
             <article className="flex gap-1 items-center">
                 <Logout />
-                <Button
-                    variant="bordered"
-                    color="danger"
-                    radius="sm"
-                    startContent={<Trash size={17} />}
-                    className="my-2 font-semibold"
-                >
-                    Delete account
-                </Button>
+                <DeleterUser />
             </article>
 
             <Divider 

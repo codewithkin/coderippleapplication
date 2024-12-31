@@ -15,6 +15,6 @@ export default {
     async redirect({ url, baseUrl }) {
       // Example: Redirect to a specific URL after sign-in
       return baseUrl + '/dashboard'; // Replace with your desired path
-    },
+    }
   },
 } satisfies NextAuthConfig

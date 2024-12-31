@@ -1,5 +1,5 @@
 "use client";
-import { signOut } from "@/auth";
+import { signUserOut } from "@/lib/actions";
 import { Button } from "@nextui-org/button";
 import { LogOut } from "lucide-react";
 
@@ -11,7 +11,7 @@ export default function Logout () {
                 radius="sm"
                 startContent={<LogOut size={17} />}
                 className="my-2 font-semibold"
-                onClick={async () => signOut()}
+                onClick={async () => await signUserOut()}
             >
             
             Logout
