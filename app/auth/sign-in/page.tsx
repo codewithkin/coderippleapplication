@@ -47,3 +47,5 @@ export default function SignIn() {
         </section>
     );
 }
+
+export const dynamic = "force-dynamic"
