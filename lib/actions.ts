@@ -18,6 +18,44 @@ export async function signUserOut () {
     }
 }
 
+export async function getUserNotifications () {
+    try {
+        const session = await auth();
+        const id = session?.user?.id;
+
+        const notifications = await prisma.notification.findMany({
+            where: {
+                id
+            }
+        });
+
+        return notifications;
+    } catch (e) {
+        console.log("An error occured while getting user notifications: ", e);
+
+        return [];
+    }
+}
+
+export async function getUserApps () {
+    try {
+        const session = await auth();
+        const id = session?.user.id;
+
+        const apps = await prisma.app.findMany({
+            where: {
+                id,
+            }
+        });
+
+        return apps;
+    } catch (e) {
+        console.log("An error occured while getting user apps: ", e);
+
+        return [];
+    }
+}
+
 export async function deleteUser () {
     try {
         const session = await auth();
