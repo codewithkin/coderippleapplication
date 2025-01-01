@@ -90,8 +90,7 @@ export default function NewAppForm({searchParams}: {searchParams: {appId: string
             }
 
             // Send the app's data to the server
-            //If the environment is dev, make a request to locahost:8000/api/apps/new, otherwise make a request to the hoest app at "http://139.177.204.135:3000/api/newapp"
-            const res = await fetch(process.env.NODE_ENV === "development" ? "http://localhost:8000/api/apps/build/" : "http://139.177.204.135:8000/api/apps/build/", {
+            const res = await fetch(process.env.NODE_ENV === "development" ? "http://localhost:8000/api/apps/build/" : "http://api.coderipple.live/api/apps/build/", {
                 method: "POST",
                 body: JSON.stringify(values),
                 headers: {
