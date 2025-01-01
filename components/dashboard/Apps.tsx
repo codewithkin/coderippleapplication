@@ -1,7 +1,6 @@
 import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
 import {Tooltip} from "@nextui-org/tooltip";
 import { Info, Smartphone } from "lucide-react";
-import Link from "next/link";
 import {Progress} from "@nextui-org/progress";
 import { App } from "@/app/dashboard/apps/page";
 
