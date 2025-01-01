@@ -7,6 +7,23 @@ import { redirect } from "next/navigation";
 import { notification } from "@/components/dashboard/NotificationsDrawer";
 import { auth, signOut } from "@/auth";
 
+export async function getUser () {
+   try {
+        const session = await auth();
+        const email = session?.user?.email;
+
+        const user = await prisma.user.findFirst({
+            where: {
+                email
+            }
+        });
+
+        return user;
+   } catch (e) {
+        console.log("An error occured while getting user: ", e);
+   }
+}
+
 export async function signUserOut () {
     try {
         await signOut();

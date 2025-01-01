@@ -1,5 +1,9 @@
 "use client";
 
+import { deleteUser } from "@/lib/actions";
+import { Button } from "@nextui-org/button";
+import { Trash } from "lucide-react";
+
 export default function DeleterUser () {
     return (
         <Button

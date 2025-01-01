@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/Avatar";
 import { prisma } from "@/prisma";
 import { signOut } from "@/auth";
 import Logout from "../auth/Logout";
-import { deleteUser } from "@/lib/actions";
+import { deleteUser, getUser } from "@/lib/actions";
 import DeleterUser from "./DeleteUser";
 
 // Create an app type
@@ -24,13 +24,12 @@ export type App = {
     userId: string | undefined;
 }
 
-export default async function Profile({email}: {email?: string}) {
-    const user = await prisma.user.findUnique({where: {email}});
-    console.log("Our user: ", email)
+export default async function Profile() {
+    const user = await getUser();
     if(user === undefined) return null;
 
     // Destructure the necessary fields from the user
-    const {image, name, createdOn, credits, totalSpent} = user;
+    const {image, name, createdOn, credits, totalSpent, email} = user;
 
     // Get all of the user's apps
     const apps = await prisma.app.findMany({where: {userId: user.id}});

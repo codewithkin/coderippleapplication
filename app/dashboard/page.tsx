@@ -6,7 +6,6 @@ import DateDetails from "@/components/dashboard/Date";
 import NotificationsDrawer, { notification } from "@/components/dashboard/NotificationsDrawer";
 import Walkthroughs from "@/components/dashboard/Walkthrough";
 import { getUserApps, getUserNotifications } from "@/lib/actions";
-import { prisma } from "@/prisma";
 
 export default async function Dashboard() {
     const apps = await getUserApps();
