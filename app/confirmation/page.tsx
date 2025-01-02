@@ -45,7 +45,7 @@ export default async function Page({
           <article className="p-4 w-screen h-screen flex flex-col items-center justify-center">
             <h2 className="text-2xl font-semibold text-green-500">Payment received Succesfully</h2>
             <p className="text-gray-400">Your credits have been updated</p>
-            <p className="text-sm">Checkout id: </p>
+            <p className="text-sm">Checkout id: {checkout_id}</p>
             <Link 
             className="bg-blue-500 mt-4 text-white rounded-lg px-4 py-2"
             href="/dashboard/my-account">Create a new app</Link>

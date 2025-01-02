@@ -22,16 +22,16 @@ export default function NewAppForm({searchParams}: {searchParams: {appId: string
     // const retryAppData: App = findApp(appId);
 
     const handleAppCreation = async (event: React.FormEvent) => {
-        // Prevent the form from being cleared when submitted
-        event.preventDefault();
-
         try {
+            // Prevent the form from being cleared when submitted
+            event.preventDefault();
+
             // Show the loading spinner and disable the button
             setLoading(true);
 
             // Get the user's credits
             const {credits} = await getUserCredits();
-            if(!credits) return;
+            if(!credits) await handlePayment(event);
 
             await decreaseUserCredits();
 
@@ -64,15 +64,10 @@ export default function NewAppForm({searchParams}: {searchParams: {appId: string
             // Add the file to the values object
             values.appIconUrl = fileUrl;
 
-            console.log(JSON.stringify(values))
-
             // Run the server action to create a new app db entry
             var {id, success} = await createApp(values);
 
             if(!success) {
-                // Show an error toast
-                toast.error("An error occured while creating your app");
-
                 // Create a new notification
                 await addNewNotification({
                     status: "unread",
@@ -86,7 +81,7 @@ export default function NewAppForm({searchParams}: {searchParams: {appId: string
                 // Update the app's status to failed
                 await updateApp(id, { status: "failed" })
 
-                return;
+                return toast.error("An error occured while creating your app")
             }
 
             // Send the app's data to the server
@@ -116,7 +111,7 @@ export default function NewAppForm({searchParams}: {searchParams: {appId: string
                 });
 
                 // Show a success toast
-                toast.success("App created successfully");
+                return toast.success("App created successfully");
             } else {
                 const data = await res.json();
 

@@ -43,8 +43,7 @@ export default async function Profile() {
 
     // Calculate the days since signup
     const currentDate = new Date();
-    console.log(user);
-    const daysSinceSignUp = createdOn.getDate() - currentDate.getDate()
+    const daysSinceSignUp = currentDate.getDate() - createdOn.getDate()
 
     return (
         <article className={`${poppins.className}`}>
