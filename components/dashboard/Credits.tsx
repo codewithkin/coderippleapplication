@@ -1,18 +1,12 @@
-import { auth } from "@/auth"
 import { Button } from "@nextui-org/button";
 import Purchase from "./Purchase";
+import { getUserCredits } from "@/lib/actions";
 
 export default async function Credits () {
-    // Get the user's credentials
-    const session = await auth();
-    const {email} = session?.user;
-
     // Get the user's credits
-    const {credits} = await prisma.user.findFirst({
-        where: {
-            email
-        }
-    });
+    const {credits} = await getUserCredits()
+
+    if(!credits) return null;
 
     if(credits === 0) {
         return (
