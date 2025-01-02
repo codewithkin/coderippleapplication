@@ -90,7 +90,7 @@ export default function NewAppForm({searchParams}: {searchParams: {appId: string
             }
 
             // Send the app's data to the server
-            const res = await fetch(process.env.NODE_ENV === "development" ? "http://localhost:8000/api/apps/build/" : "http://api.coderipple.live/api/apps/build/", {
+            const res = await fetch(process.env.NODE_ENV === "development" ? "http://localhost:8000/api/apps/build/" : "https://api.coderipple.live/api/apps/build/", {
                 method: "POST",
                 body: JSON.stringify(values),
                 headers: {
